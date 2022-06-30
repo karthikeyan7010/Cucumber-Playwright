@@ -23,13 +23,6 @@ async errormessage() {
     await page.waitForTimeout(1000);
 }
 
-async registrationlandingpage() {
-    await page.goto('http://local.magento.com/')
-    await page.waitForTimeout(1000);
-    await page.click('text=Sign In');
-}
-
-
 async invalidemailid(emailid) {
     await page.locator('#email').fill(emailid);
     await page.waitForTimeout(2000);
@@ -45,21 +38,24 @@ async emailerrormessage() {
     await page.waitForTimeout(2000);
 }
 
-async homepage() {
-    await page.goto('http://local.magento.com/');
+async invalidpassword(password) {
+    await page.locator('#email').fill("karthickdk33@gmail.com");
+    await page.waitForTimeout(2000);
+    await page.type('input[name="login[password]"]', password);
 }
 
-async signinbutton1() {
-    await page.click('text=Sign In');
+async clicksigin1() {
+    await page.click('#send2');
 }
 
-async siginaccpage() {
-    await page.waitForSelector('.customer-account-login')
+async incorrectcapcha() {
+    await page.waitForSelector('.messages')
 }
 
 async valid() {
-    await page.locator('#email').fill("karthickrabd@gmail.com");
-    await page.locator('#pass').fill("admin@123");
+    await page.locator('#email').fill("karthickdk33@gmail.com");
+    await page.waitForTimeout(2000);
+    await page.type('input[name="login[password]"]', 'admin@123');
 }
 async clicksigin() {
     await page.click('#send2');

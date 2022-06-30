@@ -1,21 +1,21 @@
 const { Given, When,Then,defineStep } = require('@cucumber/cucumber')
-const { RegCust } = require('../page-objects/register-page')
-const { LoginPage } = require('../page-objects/login-page')
-const { Guestacc } = require('../page-objects/guest-page')
+const { RegCust } = require('../page-objects/registercustomer-page')
+const { LoginPage } = require('../page-objects/NewCustomerRegistration-page')
+const { Guestacc } = require('../page-objects/guestorder-page')
 
 const regcust = new RegCust()
 const loginPage = new LoginPage()
 const guestacc = new Guestacc()
 
-Given('the user will navigates from Homepage', async function () {
-    await regcust.navigate()
+Given('the user navigates to Homepage URL', async function () {
+    await regcust.navigateToHomePage()
 })
 
-When('User clicks on the Sigin button', async function () {
+When('the user clicks on the Sigin button', async function () {
     await regcust.siginaccount()
 })
 
-Then('The user should be navigated to Sigin page', async function () {
+Then('the user should be navigated to Sigin page', async function () {
     await regcust.signinpage()
 })
 
@@ -24,12 +24,8 @@ When('The user clicks on Sigin button', async function () {
     await regcust.signinbutton()
 })
 
-Then('the user should see 2 error message This is a required field', async function () {
+Then('the user should see 2 error messages "This is a required field"', async function () {
     await regcust.errormessage()
-})
-
-Given('the registration Landing page is shown', async function () {
-    await regcust.registrationlandingpage()
 })
 
 When(
@@ -47,19 +43,23 @@ Then('the user should see Please enter a valid email address Ex: johndoe@domain.
     await regcust.emailerrormessage()
 })
 
+When(
+    /^the user enters Invalid password in the required fields "([^"]*)"$/,
+    async function (password) {
+        await regcust.invalidpassword(password)
+    }
+    )
+
+defineStep('click a sigin button', async function () {
+    await regcust.clicksigin1()
+})
+
+Then('the user should see "Incorrect CAPTCHA"', async function () {
+    await regcust.incorrectcapcha()
+})
+
+
 //Order placement using (postive scenario)
-
-Given('The user will navigates to HomepageURL.', async function () {
-    await regcust.homepage()
-})
-
-When('The user clicks on the Sigin button', async function () {
-    await regcust.signinbutton1()
-})
-
-Then('The user should be navigated to Sigin account page', async function () {
-    await regcust.siginaccpage()
-})
 
 When('The user enters valid credentials in the required fields for customer Sigin page', async function () {
     await regcust.valid()
@@ -69,19 +69,19 @@ defineStep('click sigin button', async function () {
     await regcust.clicksigin()
 })
 
-Then('the user should be redirected to  HomepageURL', async function () {
+Then('the user should be on respective landing Home page', async function () {
     await regcust.navigatehomepage()
 })
 
-When('User click on the respective Product', async function () {
+When('the user clicks on the Name of the product', async function () {
     await regcust.selectproduct()
 })
 
-defineStep('I click the add to basket button', async function () {
+defineStep('the user clicks Add to Cart button', async function () {
     await regcust.addtocart()
 })
 
-Then('the product is added to minicart', async function () {
+Then('the product is added to minicart wrapper', async function () {
     await regcust.minicart()
 })
 
@@ -115,7 +115,7 @@ When('the user clicks on create an account button', async function () {
     await loginPage.clickbutton()
 })
 
-Then('the user should see 5 error message', async function () {
+Then('the user should see 5 error message "This is a required field"', async function () {
     await loginPage.errormessage()
 })
 
@@ -139,18 +139,6 @@ Then('the user should see Minimum of different classes of characters in password
 })
 
 // valid Registration Authentication (Postive scenario)
-
-Given('The user will navigates to Homepage url', async function () {
-    await loginPage.landingpage()
-})
-
-When('The user will clicks on the create a account button', async function () {
-    await loginPage.clickcreateaccount()
-})
-
-Then('The user will should be navigated to customer account page', async function () {
-    await loginPage.clickcreateaccount()
-})
 
 When('The user enters valid credentials in the required fields for customer registration', async function () {
     await loginPage.validcredentials()

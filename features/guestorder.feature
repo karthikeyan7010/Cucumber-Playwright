@@ -1,9 +1,12 @@
-Feature: Guest order Registration
+Feature: Guest order Place
 
-Scenario: Guest order placement using (Negative scenario)
+
+Background:Guest place Order 
     Given The guest user will navigates to homepageurl
     When Guest user will clicks on the respective Product
     Then The guest user can be navigated to product details page
+
+Scenario:Guest place Order using (Negative scenario)
     When Guest user can click the add to cart button
     Then The product will added from minicart basket
     When Guest user will be clicks on the proceed to checkout button
@@ -14,8 +17,6 @@ Scenario: Guest order placement using (Negative scenario)
     When I fill the valid email form with "<emailid>"
     Then the user should will seen Please enter a valid email address Ex: johndoe@domain.com. message
 
-
-
         Examples:
             | emailid | 
             | karthikeyan3071997@gmail.com |    
@@ -23,10 +24,7 @@ Scenario: Guest order placement using (Negative scenario)
 
 
 
-Scenario: Guest Order placement using (Postive scenario)
-    Given A user is on homepageurl
-    When the user clicks on the respective Product
-    Then The guest user should be navigated to pdp page
+Scenario:Guest place Order using (Postive scenario)
     When  I clicks on the add to cart button
     Then The product is added to minicart wrapper
     When Guest user will click the proceed to checkout button

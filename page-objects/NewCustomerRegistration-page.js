@@ -44,20 +44,6 @@ async passworderrormessage() {
     await page.waitForSelector('#password-error');
     await page.waitForTimeout(2000);
 }
-    async landingpage() {
-        await page.goto('http://local.magento.com/');
-        await page.waitForTimeout(1000);
-}
-
-async clickcreateaccount() {
-    await page.click('text=Create an Account')
-    await page.waitForTimeout(1000);
-}
-
-async navigatepage() {
-    await page.waitForSelector('.customer-account-create')
-    await page.waitForTimeout(1000);
-}
 
     async validcredentials() {
         await page.locator('#firstname').fill("karthick");
