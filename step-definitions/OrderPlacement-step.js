@@ -3,7 +3,7 @@ const { orderplacement } = require('../page-objects/OrderPlacement-page')
 
 const guestacc = new orderplacement()
 
-Given('The user is on Checkout landing Page', async function () {
+Then('The user is on Checkout landing Page', async function () {
     await guestacc.checkoutpage()
 })
 
@@ -36,7 +36,7 @@ When('The guest user click on a Next button', async function () {
 })
 
 
-defineStep(
+When(
     /^The guest user enter valid details for shipping address page "([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)"$/,{timeout: 2 * 5000},
     async function (emailid,FirstName,LastName,Street,City,Postcode,Telephone) {
         await guestacc.validdetails(emailid,FirstName,LastName,Street,City,Postcode,Telephone)
@@ -55,7 +55,7 @@ Then('The user should navigated in Order Success page', async function () {
     await guestacc.successpage()
 })
 
-defineStep(
+When(
     /^The user enter valid details for shipping address page "([^"]*)","([^"]*)"$/,{timeout: 2 * 5000},
     async function (emailid,Password) {
         await guestacc.loggedinemailid(emailid,Password)

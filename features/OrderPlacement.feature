@@ -2,12 +2,11 @@ Feature:Order Placement
 
 
 Background:Order Placement
-    Given the user navigates to Homepageurl
-    And the user will clicks on the Product
-    And  The user added a product to the cart to proceed to a checkout page
+    Given the user in Homepage and select on the Product
+    When The user added a product to the cart to proceed to a checkout page
+    Then The user is on Checkout landing Page
 
     Scenario:Validate Empty field in Guest user (Negative scenario)
-    Given The user is on Checkout landing Page
     When The user clicks on Next button
     Then The user should see 8 error messages "This is a required field"
 
@@ -22,7 +21,6 @@ Background:Order Placement
             | karthikeyan3071997.com|
 
     Scenario:Validate Empty field in Logged In user (Negative scenario)  
-    Given The user is on Checkout landing Page
     When The user clicks on Next button
     Then The user should see 8 error messages "This is a required field"
 
@@ -40,9 +38,8 @@ Background:Order Placement
 
 
     Scenario: Guest order placement (postive scenario)
-    Given The user is on Checkout landing Page
-    And  The guest user enter valid details for shipping address page "<emailid>","<FirstName>","<LastName>","<Street>","<City>","<Postcode>","<Telephone>"
-    When The user clicks on Next button
+    When  The guest user enter valid details for shipping address page "<emailid>","<FirstName>","<LastName>","<Street>","<City>","<Postcode>","<Telephone>"
+    And The user clicks on Next button
     Then The user should redirected checkout payment page
     When The user checks the payment method and clicks on a Place Order button
     Then The user should navigated in Order Success page
@@ -52,9 +49,8 @@ Background:Order Placement
 
 
     Scenario: Logged In order placement (postive scenario)
-    Given The user is on Checkout landing Page
-    And  The user enter valid details for shipping address page "<emailid>","<Password>"
-    When The user clicks on Next button
+    When  The user enter valid details for shipping address page "<emailid>","<Password>"
+    And The user clicks on Next button
     Then The user should redirected checkout payment page
     When The user checks the payment method and clicks on a Place Order button
     Then The user should navigated in Order Success page

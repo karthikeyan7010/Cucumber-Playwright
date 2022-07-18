@@ -2,11 +2,10 @@ Feature:Customer Registration
 
 
 Background:Customer Registration
-	Given the user navigates to Homepage
-    And clicks on Create an Account button
+	Given the user in Homepage and clicks Create an Account button in header
+    And user is in customer registration page
 
 Scenario: Empty Customer Registration (Negative scenario)
-    Given user is in customer registration page
     When the user clicks on create an account button
     Then the user should see 5 error message "This is a required field"
 
@@ -31,9 +30,8 @@ Scenario: Password  validation for Customer Registration (Negative scenario)
 
 
 Scenario: Customer Registration (Postive scenario)
-    Given user in customer registration page
-    And User create account with "<FirstName>","<LastName>","<EmailID>","<Passwords>","<confirmpassword>"
-    When click create an account button
+    When User create account with "<FirstName>","<LastName>","<EmailID>","<Passwords>","<confirmpassword>"
+    And click create an account button
     Then the user is created and redirected to My Account page
 
 

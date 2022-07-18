@@ -3,15 +3,11 @@ const { CustomerRegistration } = require('../page-objects/CustomerRegistration-p
 
 const loginPage = new CustomerRegistration()
 
-Given('the user navigates to Homepage', async function () {
-    await loginPage.navigateToHomePage()
+Given('the user in Homepage and clicks Create an Account in header', async function () {
+    await loginPage.navigateaccpage()
 })
 
-defineStep('clicks on Create an Account button', async function () {
-    await loginPage.createaccount()
-})
-
-Given('user is in customer registration page', async function () {
+defineStep('user is in customer registration page', async function () {
     await loginPage.customerform()
 })
 
@@ -46,19 +42,14 @@ Then('the user should see "Minimum of different classes of characters in passwor
 })
 
 
-Given('user in customer registration page', async function () {
-    await loginPage.registrationformpage()
-})
-
-
-defineStep(
+When(
     /^User create account with "([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)"$/,
     async function (FirstName, LastName,EmailID,Passwords,confirmpassword) {
         await loginPage.customerdetails(FirstName, LastName,EmailID,Passwords,confirmpassword)
     }
 )
 
-When('click create an account button', async function () {
+defineStep('click create an account button', async function () {
     await loginPage.formsubmit()
 })
 

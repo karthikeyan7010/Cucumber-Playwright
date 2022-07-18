@@ -3,15 +3,11 @@ const { RegCust } = require('../page-objects/LoggedInCustomer-page')
 
 const regcust = new RegCust()
 
-Given('the user navigates to Homepage URL', async function () {
-    await regcust.navigateToHomePage()
+Given('the user in Homepage and clicks Sigin button in header', async function () {
+    await regcust.navigateTosignaccpage()
 })
 
-defineStep('clicks on Sigin button', async function () {
-    await regcust.siginaccount()
-})
-
-Given('user is in customer Sigin page ', async function () {
+defineStep('user is in customer Sigin page ', async function () {
     await regcust.signinpage()
 })
 
@@ -20,7 +16,7 @@ When('The user clicks on Sigin button', async function () {
     await regcust.signinbutton()
 })
 
-Then('the user should see 2 error messages "This is a required field"', async function () {
+Then('the user should see 2 error messages "This is a required field"',{timeout: 2 * 5000}, async function () {
     await regcust.requriedfielderror()
 })
 
@@ -56,11 +52,6 @@ Then('the user should see "Incorrect CAPTCHA"', async function () {
 
 
 //Order placement using (postive scenario)
-
-Given('the user should navigated to Sigin page', async function () {
-    await regcust.signinpage1()
-})
-
 When(
     /^The user enters valid credentials in the required fields for customer Sigin page"([^"]*)","([^"]*)"$/,
     async function (EmailID,password) {

@@ -9,11 +9,8 @@ locators = {
 }
 class CustomerRegistration {
 
-    async navigateToHomePage() {
+    async navigateaccpage() {
         await page.goto(global.BASE_URL);
-}
-
-    async createaccount() {
         await page.click('text=Create an Account')
 }
 

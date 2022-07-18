@@ -1,11 +1,10 @@
 Feature: Logged In Customer
 
 Background: Logged In Customer
-    Given the user navigates to Homepage URL
-    And clicks on Sigin button
+    Given the user in Homepage and clicks Sigin button in header
+    And user is in customer Sigin page
 
 Scenario: Validate Empty Logged In Customer(negative scenario)
-    Given user is in customer Sigin page 
     When The user clicks on Sigin button
     Then the user should see 2 error messages "This is a required field"
 
@@ -30,7 +29,6 @@ Scenario: Password validation for Logged In Customer (Negative scenario)
         |  karthick33@gmail.com     | karthick1234     | 
 
 Scenario: Logged In Customer(postive scenario)
-    Given the user should navigated to Sigin page
     When The user enters valid credentials in the required fields for customer Sigin page "<EmailID>","<password>"
     And  click sigin button
     Then the user should be on respective landing Home page

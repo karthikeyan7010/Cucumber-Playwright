@@ -3,14 +3,10 @@ locators = {
 }
 class RegCust {
 
-async navigateToHomePage() {
+async navigateTosignaccpage() {
     await page.goto(global.BASE_URL);
-}
-
-async siginaccount() {
     await page.click('text=Sign In');
 }
-
 
 async signinpage() {
     await page.waitForSelector('.customer-account-login')
