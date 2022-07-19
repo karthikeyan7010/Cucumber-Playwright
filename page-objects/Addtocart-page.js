@@ -29,6 +29,10 @@ class Addtocart {
 }
 
     async proceedtocheckout() {
+        await page.click('#option-label-size-143-item-169');
+        await page.click('#option-label-color-93-item-57');
+        await page.type('input[name="qty"]',"5");
+        await page.waitForTimeout(2000);
         await page.click('#product-addtocart-button');
         await page.waitForTimeout(4000);
         await page.click('.minicart-wrapper');
