@@ -18,9 +18,8 @@ Then('The user should see 8 error messages "This is a required field"', async fu
 When(
     /^I fill the email field form with "([^"]*)"$/,{timeout: 2 * 5000},
     async function (emailid) {
-        await guestacc.invalidemail(emailid)
-    }
-    )
+    await guestacc.invalidemail(emailid)
+})
 
 defineStep('click Next button', async function () {
     await guestacc.nextbutton()
@@ -30,18 +29,15 @@ Then('"Please enter a valid email address" should be displayed',{timeout: 2 * 50
     await guestacc.emailerrormessage()
 })
 
-
 When('The guest user click on a Next button', async function () {
     await guestacc.nextbuttton()
 })
 
-
 When(
     /^The guest user enter valid details for shipping address page "([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)","([^"]*)"$/,{timeout: 2 * 5000},
     async function (emailid,FirstName,LastName,Street,City,Postcode,Telephone) {
-        await guestacc.validdetails(emailid,FirstName,LastName,Street,City,Postcode,Telephone)
-    }
-    )
+    await guestacc.validdetails(emailid,FirstName,LastName,Street,City,Postcode,Telephone)
+})
 
 Then('The user should redirected checkout payment page', async function () {
     await guestacc.paymentpage()
@@ -58,6 +54,5 @@ Then('The user should navigated in Order Success page', async function () {
 When(
     /^The user enter valid details for shipping address page "([^"]*)","([^"]*)"$/,{timeout: 2 * 5000},
     async function (emailid,Password) {
-        await guestacc.loggedinemailid(emailid,Password)
-    }
-    )
+    await guestacc.loggedinemailid(emailid,Password)
+})

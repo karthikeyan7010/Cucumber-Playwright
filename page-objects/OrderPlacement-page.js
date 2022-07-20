@@ -5,16 +5,18 @@ locators = {
 
 class orderplacement {
 
-    async checkoutpage() {
+
+async checkoutpage() {
     await page.waitForSelector('.checkout-shipping-address')
     const checkoutpage =  await page.isVisible('.checkout-shipping-address');
     return expect(checkoutpage).to.equal(true);
 }
 
-    async nextbutton() {
-        await page.click('text=Fixed');
-        await page.waitForTimeout(4000);
-        await page.click('text=Next');
+async nextbutton() {
+    await page.waitForTimeout(4000);
+    await page.click('text=Fixed');
+    await page.click('text=Next');
+    await page.waitForTimeout(4000);
 }
 
 async requiredfielderror() {
@@ -75,5 +77,6 @@ async loggedinemailid(emailid,Password) {
     await page.click('text=Login');
     await page.waitForTimeout(3000);
 }
+
 }
 module.exports = { orderplacement }

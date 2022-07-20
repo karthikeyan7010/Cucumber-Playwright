@@ -5,13 +5,14 @@ class RegCust {
 
 async navigateTosignaccpage() {
     await page.goto(global.BASE_URL);
+    await page.waitForTimeout(2000);
     await page.click('text=Sign In');
 }
 
 async signinpage() {
     await page.waitForSelector('.customer-account-login')
     const visible =  await page.isVisible('.customer-account-login');
-        return expect(visible).to.equal(true);
+    return expect(visible).to.equal(true);
 }
 async signinbutton() {
     await page.click('#send2');
@@ -76,35 +77,8 @@ async navigatehomepage() {
 }
 
 async selectproduct() {
-    await page.click('text=Push It Messenger Bag');
+    await page.click('text=Breathe-Easy Tank');
 }
 
-async addtocart() {
-    await page.click('#product-addtocart-button');
-}
-
-async minicart() {
-        await page.waitForTimeout(2000);
-        await page.click('.minicart-wrapper');
-}
-
-async proceedtocheckout() {
-    await page.click('#top-cart-btn-checkout');
-    await page.click('text=Fixed');
-}
-
-async placeorder() {
-    await page.click('text=Next');
-    await page.click('text= Place Order');
-    await page.waitForTimeout(4000);
-    
-}
-
-async successpage() {
-    await page.waitForSelector('.page-title-wrapper')
-    const visible =  await page.isVisible('.page-title-wrapper');
-    return expect(visible).to.equal(true);
-    
-}
 }
 module.exports = { RegCust }

@@ -9,24 +9,25 @@ locators = {
 }
 class CustomerRegistration {
 
-    async navigateaccpage() {
-        await page.goto(global.BASE_URL);
-        await page.click('text=Create an Account')
+
+async navigateaccpage() {
+    await page.goto(global.BASE_URL);
+    await page.click('text=Create an Account')
 }
 
-    async customerform() {
-        await page.waitForSelector('.customer-account-create')
-        const visible =  await page.isVisible('.customer-account-create');
-        return expect(visible).to.equal(true);
+async customerform() {
+    await page.waitForSelector('.customer-account-create')
+    const visible =  await page.isVisible('.customer-account-create');
+    return expect(visible).to.equal(true);
+}
 
-    }
-    async clickbutton() {
-        await page.click('button:has-text("Create an Account")');
+async clickbutton() {
+    await page.click('button:has-text("Create an Account")');
 }
 
 async requriedfielderror() {
     const requriedfielderror =  await page.isVisible('.mage-error');
-        return expect(requriedfielderror).to.equal(true);
+    return expect(requriedfielderror).to.equal(true);
 }
 
 async submitLoginWithParameters(emailid) {
@@ -59,13 +60,13 @@ async registrationformpage() {
     
 }
 
-    async customerdetails(FirstName,LastName,EmailID,Passwords,confirmpassword) {
-        await page.locator(locator.firstname_input).fill(FirstName);
-        await page.locator(locator.lastname_input).fill(LastName);
-        await page.locator(locator.email_address_input).fill(EmailID);
-        await page.locator(locator.password_input).fill(Passwords);
-        await page.locator(locator.passwordconfirmation_input).fill(confirmpassword);
-        await page.waitForTimeout(1000);
+async customerdetails(FirstName,LastName,EmailID,Passwords,confirmpassword) {
+    await page.locator(locator.firstname_input).fill(FirstName);
+    await page.locator(locator.lastname_input).fill(LastName);
+    await page.locator(locator.email_address_input).fill(EmailID);
+    await page.locator(locator.password_input).fill(Passwords);
+    await page.locator(locator.passwordconfirmation_input).fill(confirmpassword);
+    await page.waitForTimeout(1000);
 
 }
 
@@ -78,7 +79,8 @@ async formsubmit() {
 async myaccpage() {
     await page.waitForSelector('.page-title')
     const visible =  await page.isVisible('.page-title');
-        return expect(visible).to.equal(true);
+    return expect(visible).to.equal(true);
 }
+
 }
 module.exports = { CustomerRegistration }
